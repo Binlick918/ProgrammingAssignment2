@@ -2,25 +2,22 @@
 ## functions do
 
 ## Write a short comment describing this function
-## makeCacheMatrix provides four "methods" to work on the 
-## input argument x
-
 makeCacheMatrix <- function(x = matrix()) {
      m <- NULL
      set <- function(y){
       x <<- y
       m <<- NULL
     }
-    get <- function() x
-    setinverse <- function(inv) m<<-inv
-    getinverse <- function() m
+    get <- function() x  ## returns the value of x
+    setinverse <- function(inv) m<<-inv  ##cache the value of inverse of x into m
+    getinverse <- function() m  ##return the cached value of m (which is the inverse of x)
+    
+    ## expose the four "methods" of x to the outside world 
     list(set = set, get = get,
          setinverse = setinverse, getinverse = getinverse)
 }
 
 ## Write a short comment describing this function
-
-
 cacheSolve <- function(x, ...) {
     ## Return a matrix that is the inverse of 'x'
     ## First check if there is a cached value, if yes return that value w/o calculation
